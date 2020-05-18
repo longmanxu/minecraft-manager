@@ -20,10 +20,12 @@ function initLogger() {
         oldError.apply(console, arguments);
         for (var i = 0; i < arguments.length; i++) {
             if (typeof arguments[i] == 'object') {
-                logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '<br />';
+                logger.innerHTML += '<span style="color:red">'
+                    + (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) 
+                    + '</span><br />';
             }
             else {
-                logger.innerHTML += arguments[i] + '<br />';
+                logger.innerHTML += '<span style="color:red">' + arguments[i] + '</span><br />';
             }
         }
     }
