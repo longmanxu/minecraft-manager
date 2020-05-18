@@ -27,7 +27,6 @@ async function retrieveServerStatus() {
         return serverStatus;
     }
     catch (err) {
-        alert(err);
         console.error(err);
     }
 }
@@ -54,7 +53,6 @@ async function startServer() {
         waitUntilServerStarted();
     }
     catch (err) {
-        alert(err);
         console.error(err);
     }
 }
@@ -80,7 +78,6 @@ async function stopServer() {
         waitUntilServerStopped();
     }
     catch (err) {
-        alert(err);
         console.error(err);
     }
 }
