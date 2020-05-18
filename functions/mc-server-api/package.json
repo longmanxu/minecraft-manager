@@ -1,0 +1,32 @@
+{
+  "name": "mc-server-api",
+  "version": "0.1.0",
+  "description": "A Node.js API for starting and stopping my Minecraft server",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "functions-framework --target=app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/longmanxu/minecraft-manager.git"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "minecraft"
+  ],
+  "author": "Longman Xu",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/longmanxu/minecraft-manager/issues"
+  },
+  "homepage": "https://github.com/longmanxu/minecraft-manager#readme",
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^1.5.1"
+  },
+  "dependencies": {
+    "@google-cloud/compute": "^1.2.0",
+    "express": "^4.17.1"
+  }
+}

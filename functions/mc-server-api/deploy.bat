@@ -1,0 +1,1 @@
+gcloud functions deploy mc-server-api --region us-east4 --allow-unauthenticated --entry-point app --memory 128MB --runtime nodejs10 --max-instances 5 --trigger-http 
