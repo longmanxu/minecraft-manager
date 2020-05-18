@@ -16,12 +16,14 @@ async function updateServerStatus() {
 }
 
 async function retrieveServerStatus() {
+    console.log("Retriving server status...");
     try {
         let response = await fetch("https://us-east4-minecraft-275800.cloudfunctions.net/mc-server-api/server-status?token=" + token);
         if (response.status < 200 || response.status >= 300) {
             throw "Bad response status: " + response.status;
         }
         let serverStatus = await response.text();
+        console.log("Server status: " + serverStatus);
         return serverStatus;
     }
     catch (err) {
@@ -37,11 +39,18 @@ async function startServer() {
         if (response.status < 200 || response.status >= 300) {
             throw "Bad response status: " + response.status;
         }
-        let serverStatus = await retrieveServerStatus();
-        while (serverStatus !== "RUNNING") {
-            serverStatus = await retrieveServerStatus();
+
+        function waitUntilServerStarted() {
+            retrieveServerStatus().then((serverStatus) => {
+                if (serverStatus === "RUNNING") {
+                    setServerStatus(serverStatus);
+                }
+                else {
+                    setTimeout(waitUntilServerStarted, 5000);
+                }
+            });
         }
-        setServerStatus(serverStatus);
+        waitUntilServerStarted();
     }
     catch (err) {
         alert(err);
@@ -56,11 +65,17 @@ async function stopServer() {
         if (response.status < 200 || response.status >= 300) {
             throw "Bad response status: " + response.status;
         }
-        let serverStatus = await retrieveServerStatus();
-        while (serverStatus !== "TERMINATED") {
-            serverStatus = await retrieveServerStatus();
+        function waitUntilServerStopped() {
+            retrieveServerStatus().then((serverStatus) => {
+                if (serverStatus === "TERMINATED") {
+                    setServerStatus(serverStatus);
+                }
+                else {
+                    setTimeout(waitUntilServerStopped, 5000);
+                }
+            });
         }
-        setServerStatus(serverStatus);
+        waitUntilServerStopped();
     }
     catch (err) {
         alert(err);
