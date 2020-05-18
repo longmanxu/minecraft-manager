@@ -33,6 +33,7 @@ async function retrieveServerStatus() {
 }
 
 async function startServer() {
+    console.log("Starting server...");
     showLoader();
     try {
         let response = await fetch("https://us-east4-minecraft-275800.cloudfunctions.net/mc-server-api/server-start?token=" + token, { method: 'PUT' });
@@ -59,6 +60,7 @@ async function startServer() {
 }
 
 async function stopServer() {
+    console.log("Stopping server...");
     showLoader();
     try {
         let response = await fetch("https://us-east4-minecraft-275800.cloudfunctions.net/mc-server-api/server-stop?token=" + token, { method: 'PUT' });
