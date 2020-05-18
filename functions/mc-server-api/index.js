@@ -1,10 +1,13 @@
 'use strict';
 
+const cors = require('cors');
 const express = require('express');
-const app = express();
 
 const auth = require('./auth');
 const serverHandler = require('./server-handler');
+
+const app = express();
+app.use(cors());
 
 app.get('/', (req, res) => {
     const message = 

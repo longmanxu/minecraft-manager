@@ -2,14 +2,21 @@
 <html>
     <head>
         <title>Minecraft Manager</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <script src="api-calls.js"></script>
     </head>
     <body>
         <header><h1>Minecraft Manager</h1></header>
         Current server status: <div id="server-status"></div>
+        <script>updateServerStatus();</script>
         <br />
-        <button>Start</button>
+        <button onclick="startServer()">Start</button>
         <br /><br />
-        <button>Stop</button>
+        <button onclick="stopServer()">Stop</button>
         <br />
+        <footer>
+            <hr />
+            Source: <a href="https://github.com/longmanxu/minecraft-manager">https://github.com/longmanxu/minecraft-manager</a>
+        </footer>
     </body>
 </html>
