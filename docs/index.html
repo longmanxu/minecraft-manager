@@ -2,26 +2,70 @@
 <html>
     <head>
         <title>Minecraft Manager</title>
+
+        <!--Load bootstrap and custom styles-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+
+        <!--Icon-->
+        <link rel='icon' type="image/icon type" href='styles/resources/dirt_block.png' />
+
+
         <script src="scripts/logger.js"></script>
         <script src="scripts/api-calls.js"></script>
     </head>
-    <body>
-        <header><h1>Minecraft Manager</h1></header>
-        Current server status: <div id="server-status"></div>
-        <br />
-        <button onclick="startServer()">Start</button>
-        <br /><br />
-        <button onclick="stopServer()">Stop</button>
-        <br />
-        <pre id="log"></pre>
-        <footer>
-            <hr />
-            Source: <a href="https://github.com/longmanxu/minecraft-manager">https://github.com/longmanxu/minecraft-manager</a>
+
+    <body class='mc-world-background'>
+        <div id='page-container' class='page-wrap'>
+            <div class='container-fluid mc-font' id='content-wrap'>
+                <header><h1 class='text-center mt-5 white-text'>Minecraft Manager</h1></header>
+    
+                <!--Server status-->
+                <div class='row'>
+                    <div class='col-md-6'>
+                        <div class='jumbotron h-100'>
+                            <p>Current server status:</p>
+                            <div id="server-status"></div>
+                        </div>
+                    </div>
+    
+                    <div class='col-md-6'>
+                        <div class='jumbotron h-100'>
+                            <h5>Server Status</h5>
+                                <pre id="log"></pre>
+                        </div>
+                    </div>
+                </div>
+    
+                <br />
+                <!--Start stop buttons-->
+                <div class='row'>
+                    <div class='col-md-6'>
+                        <div class='center'>
+                            <button class='button' onclick="startServer()">Start</button>
+                            <br />
+                            <br />
+                            <button class='button' onclick="stopServer()">Stop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+        <div class='mc-font white-text mc-dirt-background site-footer' id='footer'>
             <br />
-            Privacy Policy: <a href="https://github.com/longmanxu/minecraft-manager/blob/master/privacy_policy.md">https://github.com/longmanxu/minecraft-manager/blob/master/privacy_policy.md</a>
-            <br /><br />
-        </footer>
+            <br />
+            <p class='text-center'>
+                Source: &nbsp; <a href="https://github.com/longmanxu/minecraft-manager">https://github.com/longmanxu/minecraft-manager</a>
+            </p>
+            <p class='text-center'>
+                Privacy Policy: &nbsp; <a href="https://github.com/longmanxu/minecraft-manager/blob/master/privacy_policy.md">https://github.com/longmanxu/minecraft-manager/blob/master/privacy_policy.md</a>
+            </p>
+        </div>
+       
+
+
         <script>initLogger();</script>
         <script>updateServerStatus();</script>
     </body>
